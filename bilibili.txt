@@ -1,0 +1,3922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bilibili</title>
+    <style type="text/css">
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        #header{
+            width:100%;
+            height:170px;
+            background:url(页眉.jpg) 100px -50px;
+        }
+        #header-top{
+            width:100%;
+            height:60px;
+        }
+        #top-list{
+            padding:10px 24px;
+            height:40px;
+        }
+        #top-list1{
+            display: inline-block;
+            width:450px;
+            height:40px;
+            list-style-type:none;
+        }
+        #top-list1>li{
+            float:left;
+            margin-right:12px;
+        }
+        #top-list1>li>a{
+            text-decoration:none;
+            color:white;
+            text-align:center;
+            line-height: 40px;
+            font-size:16px;
+        }
+        .gamecenter1{
+            position: relative;
+        }
+        .gamecenter{
+            visibility: hidden;
+            width:550px;
+            height:280px;
+            background-color:white;
+            position: absolute;
+            z-index:100px;
+            top:130%;
+            left:50%;
+            margin-left:-80px;
+            border:1px solid gray;
+            border-radius: 3px;
+            z-index: 100px;
+        }
+        .gamecenter1:hover .gamecenter{
+            visibility: visible;
+        }
+        .gamecenter ::after{
+            content:"";
+            position: absolute;
+            bottom:100%;
+            left:13%;
+            margin-left:-7px;
+            border-width:7px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+            z-index: 100px;
+        }
+        #gamecenter-left{
+            float:left;
+            width:50%;
+            height:250px;
+            padding:13px;
+        }
+        #gamecenter-left1-text{
+            width:100%;
+            height:140px;
+            content:"";
+            background:url(游戏中心1.png);
+            border-radius: 4px;
+        }
+        #gamecenter-left1-text p{
+            position:relative;
+            top:113px;
+            left:10px;
+            font-size: 15px;
+            color:white;
+        }
+        .gamecenter-photo{
+            width:80px;
+            height:130px;
+            float:left;
+            display: inline-block;
+            margin:15px 16px 10px 0px;
+        }
+        .gamecenter-photo img{
+            width:77px;
+            height:77px;
+            border-radius:18px;
+        }
+        .desc{
+            text-align: center;
+            font-size:15px;
+        }
+        #gamecenter-right{
+            display: inline-block;
+            width:150px;
+            height:260px;
+        }
+        #gamecenter-right>ul{
+            width:220px;
+            height:220px;
+            margin:10px;
+            border:1px solid gray;
+            border-radius: 3px;
+            list-style-type: none;
+            margin:40px 0px 0px 0px;
+        }
+        #gamecenter-right>ul>li{
+            text-align:left;
+            font-size:15px;
+            padding:5px 14px;
+        }
+        #gamecenter-right>ul>li>a{
+            text-decoration: none;
+            color:black;
+        }
+        #live-left{
+            display: inline-block;
+            float: left;
+            width:55%;
+            height:100%;
+        }
+        #live-left>p{
+            font-weight:700;
+            line-height:30px;
+            color:pink;
+        }
+        #live-left-box{
+            width:100%;
+            height:200px;
+            border-right:1px solid gray;
+            margin:15px 0px 0px 0px;
+            background-color:white;
+        }
+        #live-head-portrait{
+            float:left;
+            margin:0px 15px 15px 0px;
+        }
+        #live-head-portrait>img{
+            border-radius: 50%;
+        }
+        #live-head-portrait>p{
+            font-size: 13px;
+            text-align: center;
+        }
+        #live-right{
+            display: inline-block;
+            width:35%;
+            height:100%;
+            padding:0px 20px;
+        }
+        #live-right>p{
+            font-weight:700;
+            line-height:30px;
+            color:pink;
+        }
+        #live-right>img{
+            display: block;
+            margin-top:17px;
+            border-radius:5px;
+        }
+        #cartoon-left{
+            float:left;
+            display: inline-block;
+            width:64%;
+            height:260px;
+            background-color:white;
+            border-right: 1px solid gray;
+        }
+        .cartoon-photo{
+            float:left;
+            width:170px;
+            height:110px;
+            background-color:white;
+            padding:8px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+        }
+        .cartoon-photo:hover{
+            background-color:gray;
+        }
+        .cartoon-photo>p{
+            display: block;
+            padding:7px 0px;
+            font-size: 15px;
+        }
+        #cartoon-right{
+            float: left;
+            display: inline-block;
+            width:30%;
+            height:260px;
+            padding: 5px 0px 0px 20px;
+        }
+        #cartoon-right>ul{
+            list-style-type: none;
+            margin:10px 0px;
+        }
+        #cartoon-right>p{
+            display: block;
+            font-size: 18px;
+            line-height: 30px;
+            height:30px;
+        }
+        #cartoon-right>ul>li{
+            height:38px;
+        }
+        #cartoon-right a{
+            text-decoration: none;
+            color:black;
+            font-size:16px;
+        }
+        #cartoon-right span{
+            color:red;
+        }
+        #header-search{
+            display: inline-block;
+            position: relative;
+            bottom:16px;
+            left:5px;
+            width:230px;
+            height:40px;
+            margin-left:30px;
+            padding-left:18px;
+            border-style: none;
+            border-radius: 3px;
+        }
+        #header-search-button{
+            width:54px;
+            height:40px;
+            background-color:#E8E8E8;
+            border-style: none;
+        }
+        #searchphoto{
+            display: inline;
+            position: relative;
+            right:45px;
+            bottom:8px;
+        }
+        #my-photo{
+            position: relative;
+            right:20px;
+            width:40px;
+            height:40px;
+            border-radius:50%;
+        }
+        #top-list2{
+            display: inline-block;
+            float:right;
+            width:420px;
+            height:40px;
+            list-style-type: none;
+        }
+        #top-list2>li{
+            float:left;
+            margin-right:14px;
+        }
+        #top-list2>li>a{
+            text-decoration:none;
+            color:white;
+            text-align:center;
+            line-height: 40px;
+            font-size:15px;
+        }
+        #message{
+            list-style-type: none;
+            width:100%;
+            height:190px;
+        }
+        #message>li{
+            padding:9px;
+        }
+        #message>li>a{
+            text-decoration: none;
+            color:black;
+        }
+        #upload{
+            display: inline-block;
+            padding:0px 40px;
+            background-color: #fb7299;
+            border-radius:2px;
+        }
+        #content{
+            width:100%;
+            height:12300px;
+        }
+        #content-left{
+            display: inline-block;
+            float: left;
+            width:82%;
+            height:12250px;
+            margin-left:120px;
+            padding-top: 20px
+        }
+        #content-top{
+            width:100%;
+            height:70px;                                         
+            background-color:white;
+        }
+        #content-top1{
+            display: inline-block;
+            float: left;
+            width:187px;
+            height:70px;
+            background-color:white;
+            border-right:1px solid gray;
+        }
+        .top1-photo{
+            float: left;
+            width:50px;
+            height:70px;
+            background-color:white;
+        }
+        .top1-photo>p{
+            position: relative;
+            bottom:3px;
+            text-align: center;
+            font-size:15px;
+        }
+        #content-top2{
+            display: inline-block;
+            float: left;
+            width:650px;
+            height:70px;
+            border-right: 1px solid gray;
+            list-style-type: none;
+            margin-left:13px;
+            z-index: 1px;
+        }
+        .content-top-list{
+            position: relative;
+            float:left;
+            padding:8px 8px 8px 5px;
+            z-index: 0px;
+        }
+        .content-top-list>a{
+            text-decoration: none;
+            color:black;
+            font-size:15px;
+        }
+        .content-top-list>a::after{
+            position: relative;
+            top:5px;
+            content:url(999+.png);
+        }
+        .content-top-list{
+            position: relative;
+            display: inline-block;
+        }
+        .content-top-list1{
+            visibility: hidden;
+            width:160px;
+            height: 150px;
+            background-color:white;
+            border:1px solid gray;
+            border-radius: 5px;
+            padding:10px ;
+            position: absolute;
+            z-index: 1px;
+            bottom:105%;
+            left:50%;
+            margin-left:-50px;
+        }
+        .content-top-list1::after{
+            content:"";
+            position: absolute;
+            top:100%;
+            left:40px;
+            margin-left: 5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color:white transparent transparent transparent;
+        }
+        .content-top-list:hover .content-top-list1{
+            visibility: visible;
+        }
+
+        .content-top-list2{
+            visibility: hidden;
+            position: relative;
+            width:160px;
+            height: 150px;
+            background-color:white;
+            border:1px solid gray;
+            border-radius: 5px;
+            padding:10px;
+            position: absolute;
+            z-index: -1px;
+            top:105%;
+            left:50%;
+            margin-left:-50px;
+        }
+        .content-top-list2::after{
+            content:"";
+            position: absolute;
+            bottom:100%;
+            left:40px;
+            margin-left: 5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent white transparent;
+        }
+        .content-top-list:hover .content-top-list2{
+            visibility: visible;
+        }
+        .top-table{
+            width:100%;
+            height:150px;
+        }
+        .top-table>tr{
+            width:40px;
+            height:150px;
+        }
+        .top-table>tr>td{
+            width:40px;
+            height:20px;
+        }
+        .top-table a{
+            text-decoration: none;
+            color:black;
+            font-size:13px;
+        }
+        #content-top3{
+            display: inline-block;
+            float:left;
+            width:225px;
+            height:70px;
+        }
+        #content-top3>span{
+            display: inline-block;
+            float:left;
+            padding:5px;
+            font-size: 14px;
+        }
+        #content-top3 img{
+            position: relative;
+            top:5px;
+        }
+        #content-top3 a{
+            text-decoration: none;
+            color:black;
+        }
+        #slideshow{
+            width:1080px;
+            margin:30px 0px 5px 0px;
+            height:250px;
+        }
+        #slideshow1{
+            display: inline-block;
+            float: left;
+            width:470px;
+            height:215px;
+            margin-right: 10px;
+        }
+        #little-picture{
+            display: inline-block;
+            width:600px;
+            height:250px;
+        }
+        #little-picture img{
+            display: inline-block;
+            float:left;
+            margin:0px 12px 13px 0px;
+            border-radius: 3px;
+        }
+        #generalize{
+            width:100%;
+            height:300px;
+            background-color:white;
+        }
+        #generalize-top{
+            width:100%;
+            height:50px;
+            background-color:white;
+            margin-bottom:20px
+        }
+        #generalize1{
+            display: inline-block;
+            font-size:23px;
+            margin-right:20px
+        }
+        #generalize1::before{
+            content:url(推广.png);
+            position: relative;
+            top:10px;
+        }
+        #generalize2{
+            display: inline-block;
+            position: relative;
+            bottom:2px;
+        }
+        #generalize2>a{
+            text-decoration: none;
+            color:#505050;
+            font-size:14px;
+        }
+        #generalize2>a::before{
+            content:url(小火苗.png);
+            position: relative;
+            top:4px;
+        }
+        #generalize-top input{
+            position: relative;
+            top:3px;
+            float: right;
+            width:292px;
+            height:35px;
+            background-color:#F0F0F0;
+            border:1px solid #D8D8D8;
+        }
+        #generalize-bottom{
+            width:100%;
+            height:200px;
+        }
+        .generalize-box{
+            display: inline-block;
+            width:190px;
+            height:190px;
+            margin-right:5px;
+        }
+        .generalize-box>a{
+            color:black;
+            text-decoration: none;
+        }
+        .generalize-box>a>span{
+            display: block;
+            font-size:16px;
+            line-height: 25px;
+            margin:5px 0px 5px;
+        }
+        .generalize-box>a>p{
+            color:  #A8A8A8;
+            font-size:14px;
+        }
+        .generalize-box>a>p::before{
+            position: relative;
+            top:3px;
+            content:url(UP图标.png);
+        }
+        #generalize-bottom>a{
+            float: right;
+        }
+        #live{
+            width:99%;
+            height:450px;
+            margin:50px 0px 0px 6px;
+            background-color:white;
+        }
+        #liveleft{
+            display: inline-block;
+            float: left;
+            width:785px;
+            height:450px;
+        }
+        #liveleft-top{
+            width:100%;
+            height:50px;
+        }
+        .liveleft-top1{
+            display: inline-block;
+            font-size:23px;
+            margin-right:20px;
+        }
+        .liveleft-top1::before{
+            content:url(直播.png);
+            position: relative;
+            top:5px;
+        }
+        .liveleft-top2,.liveleft-top3{
+            display: inline-block;
+            font-size:14px;
+            color: #505050;
+            margin-right:20px;
+        }
+        .liveleft-top3::before{
+            content:url(小火苗.png);
+            position: relative;
+            top:4px;
+        }
+        .liveleft-top4{
+            display: inline-block;
+            float: right;
+            background-color: #F0F0F0;
+            border: 1px solid #D8D8D8;
+            padding:2px 8px 2px 8px;
+            margin:6px 0px 0px 15px;
+        }
+        .liveleft-top4>a{
+            color: #505050;
+            text-decoration: none;
+        }
+        #liveleft-bottom{
+            width:100%;
+            height:380px;
+            background-color:white;
+        }
+        .liveleft-bottom-box{
+            display: inline-block;
+            float: left;
+            width:185px;
+            height:190px;
+            background-color:white;
+            margin-right:14px;
+            margin-bottom:10px;
+        }
+        .liveleft-bottom-box a{
+            text-decoration: none;
+        }
+        .liveleft-bottom-box:hover .live-up{
+            color: #00a1d6;
+        }
+        .live-img2{
+            display: inline-block;
+            float:left;
+            width:38px;
+            height:38px;
+            border-radius: 50%;
+            margin-right:5px;
+            margin-top:5px;
+        }
+        .live-up{
+            display: inline-block;
+            float: left;
+            width:140px;
+            font-size:15px;
+            margin-top:3px;
+            color:black;
+        }
+        .liveleft-bottom-box span{
+            display: inline-block;
+            width:140px;
+            font-size:13px;
+            color: #505050;
+        }
+        .live-sort{
+            font-size:13px;
+            color: #999;
+            padding-left: 43px;
+            line-height: 30px;
+        }
+        #liveright{
+            display: inline-block;
+            width:280px;
+            height:430px;
+            margin-left:25px;
+        }
+        #liveright-top{
+            width:100%;
+            height:30px;
+            float: left;
+            margin-top:9px;
+            margin-bottom:10px;
+        }
+        #liveright-top>span{
+            display: inline-block;
+            margin:0px 10px 0px 5px;
+            font-size:13px;
+            color: #505050;
+        }
+        .cartoon-box{
+            margin-bottom:20px;
+        }
+        .cartoon-p1{
+            width:100%;
+            height:50px;
+            margin-top:10px;
+        }
+        .cartoon-p1>a{
+            font-size:15px;
+            color:black;
+            line-height:20px;
+        }
+        .cartoon-p1>a:hover{
+            color:#00a1d6;        /*！！！！！！！！！！！！蓝色！！！！！！！！！！！*/
+        }
+        .cartoon-p2>a{
+            font-size:13px;
+            color: #505050;
+        }
+        .cartoon-p2>a:hover{
+            color:#00a1d6;      
+        }
+        .cartoon-p2>a::before{
+            content:url(UP图标.png);
+            position: relative;
+            top:3px;
+        }
+        #cartoon-right-toplist{
+            width:100%;
+            height:50px;
+            background-color:white;
+        }
+        #cartoon-right-toplist>span{
+            font-size: 23px;
+            color:black;
+        }
+        #cartoon-right-toplist>a{
+            display: inline-block;
+            float: right;
+            background-color:white;
+            border: 1px solid #D8D8D8;
+            padding: 2px 7px 2px 10px;
+            color: #505050;
+            text-decoration: none;
+        }
+        #cartoon-right-bottomlist{
+            width:100%;
+            height:400px;
+            background-color:white;
+            list-style-type: none;
+        }
+        #cartoon-right-bottomlist>li{
+            margin-bottom:20px;
+            text-decoration: none;
+            color:black;
+        }
+        #cartoon-right-bottomlist>li>a{
+            text-decoration:none; 
+        }
+        .cartoon-number{
+            display: inline-block;
+            float: left;
+            padding:0px 6px;
+            background-color:white;
+            border-radius:3px;
+            color:#999;
+            font-size:15px;
+            margin-right: 10px;
+        }
+        .cartoon-right-p1{
+            display: inline-block;
+            font-size: 15px;
+            color: black;
+            line-height: 20px;
+        }
+        #cartoon-right-bottomlist img{
+            display: inline-block;
+            float: left;
+        }
+        #cartoon-laji{
+            float: left;
+            width:245px;
+            height:94px
+        }
+        .drama-right{
+            float: right;
+            font-size: 13px;
+            color:#999;
+        }
+        #liveleft-top>ul{
+            display: inline-block;
+            list-style-type: none;
+            float: left;
+            width:450px;
+            height:36px;
+        }
+        #liveleft-top>ul>li{
+            float: left;
+            padding:6px 0px;
+            margin-right: 25px;
+        }
+        #liveleft-top>ul>li>a{
+            color:black;
+            text-decoration: none;
+            font-size:15px;
+        }
+        .drama-top-span2{
+            display: inline-block;
+            margin-top:3px;
+            padding:5px 6px 5px 8px;
+            float: right;
+            border:1px solid #00a1d6;
+            color:#00a1d6;
+        }
+        .drama-top-span2>a{
+            color:#00a1d6;
+            text-decoration: none;
+        }
+        .drama-bottom-box{
+            float: left;
+            width:230px;
+            height:80px;
+            margin:0px 10px 24px 10px;
+        }
+        .drama-bottom-box>img{
+            display: inline-block;
+            float: left;
+            margin-right: 10px;
+        }
+        .drama-bottombox-span1{
+            display: inline-block;
+            float: left;
+            width:140px;
+            height:50px;
+            margin-top:5px;
+            color:black;
+            font-size: 15px;
+        }
+        .drama-bottombox-span2{
+            display: inline-block;
+            width:100px;
+            height:10px;
+            color:#00a1d6;
+            font-size: 12px;
+        }
+        .pircture-box{
+            width:190px;
+            height:320px;
+            margin-right:8px;
+        }
+        .pircture-box>img{
+            height:240px;
+        }
+        .picture-p1{
+            height:20px;
+            margin-top:5px;
+        }
+        .picture-p2>a::before{
+            content:"";
+        }
+        .picture-p2{
+            margin-top:8px;
+        }
+        #footer{
+            width:100%;
+            height:370px;
+            background-color:#E6E6FA;
+        }
+        #footer-top{
+            display: block;
+            width:82%;
+            height:180px;
+            margin:0px 120px 0px 120px;
+        }
+        #footer-1{
+            display: inline-block;
+            float: left;
+            width:350px;
+            height:180px;
+            margin-right: 70px;
+        }
+        #footer-1>span{
+            display: block;
+            position: relative;
+            padding:17px 14px 20px;
+            font-size:18px;
+            color:#999;
+        }
+        #footer-1>ul{
+            width:330px;
+            height:150px;
+            list-style-type:none;
+        }
+        #footer-1>ul>li{
+            float: left;
+            padding:5px 13px;
+        }
+        #footer-1>ul>li>a{
+            text-decoration: none;
+            color:black;
+            font-size:15px;
+        }
+        #footer-right-box{
+            display: inline-block;
+            float: left;
+            width:80px;
+            height:50px;
+            margin-top:60px;
+        }
+        #footer-right-box>img{
+            display: block;
+            position: relative;
+            left: 7px;
+            border-radius: 50%;
+        }
+        #footer-right-box>p{
+            font-size: 14px;
+        }
+        #footer-bottom{
+            width:82%;
+            height:180px;
+            margin:0px 120px 0px 120px;
+        }
+        #footer-bottom>img{
+            float: left;
+            display: inline-block;
+            margin-right: 20px;
+        }
+        #word{
+            display: inline-block;
+            float: left;
+            width:900px;
+            height:180px;
+        }
+        #footer-bottom p{
+            display: inline-block;
+            font-size: 13px;
+            line-height:25px;
+            color:#999;
+        }
+        #fixed1{
+            position: fixed;
+            left:12px;
+            bottom:0px;
+        }
+        #fixed2{
+            height:700px;
+            width:70px;
+            list-style-type:none;
+        }
+        #fixed2>li{
+            padding:5px 17px;
+        }
+        #content-right{
+            position: sticky;
+            top:5px;
+            display: inline-block;
+            float: left;
+            width:70px;
+            height:640px;
+            margin-top:120px;
+            margin-left: 20px;
+            border: 1px solid #D8D8D8;
+            border-radius: 7px;
+        }
+        #fixed3{
+            display: block;
+            position: fixed;
+            top:370px;
+            left:0px;
+            font-size:13px;
+            padding:0px 3px;
+            width:16px;
+            height:70px;
+            border:1px solid #D8D8D8;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="header-top">
+            <div id="top-list">
+                <ul id="top-list1">
+                    <li>
+                        <a href="">主站</a>
+                    </li>
+                    <li><a href="">番剧</a></li>
+                    <li class="gamecenter1">
+                        <a href="">游戏中心</a>
+                        <div class="gamecenter">
+                            <div id="gamecenter-left">
+                                <div id="gamecenter-left1">
+                                    <div id="gamecenter-left1-text">
+                                        <p>命运-冠位指定(Fate/GO)</p>
+                                    </div>
+                                    <div class="gamecenter-photo">
+                                        <a href="">
+                                            <img src="gamecenter-photo1.png">
+                                        </a>    
+                                        <div class="desc">碧蓝航线</div>
+                                    </div>
+                                    <div class="gamecenter-photo">
+                                        <a href="">
+                                            <img src="gamecenter-photo2.png">
+                                        </a>
+                                        <div class="desc">双生视野</div>
+                                    </div>
+                                    <div class="gamecenter-photo" style="margin-right:0px">
+                                        <a href="">
+                                            <img src="gamecenter-photo3.png">
+                                        </a>
+                                        <div class="desc">大王不高</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="gamecenter-right">
+                                <ul>
+                                    <li><a href="">山海镜花</a></li>
+                                    <li><a href="">公主连结Re:Dive</a></li>
+                                    <li><a href="">魔法纪录 魔法少女小圆外传</a></li>
+                                    <li><a href="">Dead Cells</a></li>
+                                    <li><a href="">原神</a></li>
+                                    <li><a href="">重明鸟</a></li>
+                                    <li><a href="">哈利波特：魔法觉醒</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="gamecenter1">
+                        <a href="">直播</a>
+                        <div class="gamecenter" 
+                        style="padding:20px;width:500px;height:250px;">
+                            <div id="live-left">
+                                <p>热门直播:</p>
+                                <div id="live-left-box">
+                                    <div id="live-head-portrait">
+                                        <img src="一鸽.png" 
+                                            style="width:72px;height:72px;">
+                                        <p>Eagle_一鸽</p>
+                                    </div>
+                                    <div id="live-head-portrait">
+                                        <img src="oldba.png"
+                                            style="width:72px;height:72px;">
+                                        <p>OldBa1</p>
+                                    </div>
+                                    <div id="live-head-portrait">
+                                        <img src="宫本狗雨.png"
+                                            style="width:72px;height:72px;">
+                                        <p>宫本狗雨</p>
+                                    </div>
+                                    <div id="live-head-portrait"style="margin-bottom:10px;">
+                                        <img src="一米八.png"
+                                            style="width:72px;height:72px;">
+                                        <p>一米八的...</p>
+                                    </div>
+                                    <div id="live-head-portrait"style="margin-bottom:10px;">
+                                        <img src="丸子.png"
+                                            style="width:72px;height:72px;">
+                                        <p>丸子</p>
+                                    </div>
+                                    <div id="live-head-portrait"style="margin-bottom:10px;">
+                                        <img src="你的苏暖.png"
+                                            style="width:72px;height:72px;">
+                                        <p>你的苏暖</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="live-right">
+                                <p>热门活动:</p>
+                                <img src="live-right-photo.png">
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="">会员购</a></li>
+                    <li class="gamecenter1">
+                        <a href="">漫画</a>
+                        <div class="gamecenter" 
+                        style="padding:20px;width:590px;height:260px;">
+                            <div id="cartoon-left">
+                                <div class="cartoon-photo">
+                                    <div class="cartoon-photo1" style="width:160px;height:90px;background:url(天官赐服.png) -70px -40px;">
+                                    </div>
+                                    <p>天官赐服</p>
+                                </div>
+                                <div class="cartoon-photo">
+                                    <div class="cartoon-photo1" style="width:160px;height:90px;background:url(鬼灭之刃.png) -70px -130px;">
+                                    </div>
+                                    <p>鬼灭之刃</p>
+                                </div>
+                                <div class="cartoon-photo">
+                                    <div class="cartoon-photo1" style="width:160px;height:90px;background:url(石之海.png) -70px -40px;">
+                                    </div>
+                                    <p>石之海</p>
+                                </div>
+                                <div class="cartoon-photo">
+                                    <div class="cartoon-photo1" style="width:160px;height:90px;background:url(刀剑.jpg) -30px -30px;">
+                                    </div>
+                                    <p>刀剑神域 Alicization篇</p>
+                                </div>
+                            </div>
+                            <div id="cartoon-right">
+                                <P>人气漫画</P>
+                                <ul>
+                                    <li><a href=""><span>1 </span> 鬼灭之刃</a></li>
+                                    <li><a href=""><span>2 </span> 我的守护女友</a></li>
+                                    <li><a href=""><span>3 </span> 地缚少年花君子</a></li>
+                                    <li><a href=""><span>4 </span> 租借女友</a></li>
+                                    <li><a href=""><span>5 </span> 一拳超人</a></li>
+                                    <li><a href=""><span>6 </span> 幽冥诡匠</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="">赛事</a></li>
+                    <li class="gamecenter1">
+                        <a href="">下载APP</a>
+                        <div class="gamecenter" 
+                        style="padding:22px;width:145px;height:145px;">
+                        <img src="下载APP二维码.png">
+                        <p>扫码下载手机客户端</p>
+                        </div>
+                    </li>
+                </ul>
+                <input id="header-search" type="text" placeholder="亿年份的情头">
+                <input id="header-search-button" type="button" >
+                <img id="searchphoto" src="搜索图片.png">
+                <a href=""><img id="my-photo" src="页眉3.png"></a>
+
+                <ul id="top-list2">
+                    <li class="gamecenter1">
+                        <a href="">大会员</a>
+                        <div class="gamecenter"
+                        style="padding:15px;width:245px;height:220px;">
+                            <p style="display:inline-block;margin:5px 0px 15px 3px;font-size:15px;"><b>精彩推荐</b></p>
+                            <img src="大会员.png" style="width:240px;height:70px;">
+                            <p style="font-size:15px;line-height:50px;" >大会员可畅享各种专属内容，还有游</p>
+                            <a href="" style="display:block;width:200px;background-color:#0099FF;margin:0 auto;margin-top:17px;text-align: center;text-decoration: none;color:white;padding:10px 0px;">开通大会员</a>
+                        </div>
+                    </li>
+                    <li class="gamecenter1">
+                        <a href="">消息</a>
+                        <div class="gamecenter"
+                        style="padding:15px;width:150px;height:190px;">
+                            <ul id="message">
+                                <li><a href="">回复我的</a></li>
+                                <li><a href="">@我的</a></li>
+                                <li><a href="">收到的赞</a></li>
+                                <li><a href="">系统通知</a></li>
+                                <li><a href="">我的消息</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="gamecenter1">
+                        <a href="">动态</a>
+                    </li>
+                    <li class="gamecenter1">
+                        <a href="">收藏</a>
+                    </li>
+                    <li class="gamecenter1">
+                        <a href="">历史</a>
+                    </li>
+                    <li><a href="">创作中心</a></li>
+                    <li class="gamecenter1" style="margin-right:0px;">
+                        <a id="upload" href="">投稿</a>
+                        <div class="gamecenter"
+                        style="padding:15px;width:100px;height:190px;">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="content-left">
+            <div id="content-top">
+                <div id="content-top1">
+                    <div class="top1-photo" style="margin-left:8px;">
+                        <img src="首页图标.png">
+                        <p>首页</p>
+                    </div>
+                    <div class="top1-photo" style="margin-left:5px;">
+                        <img src="动态图标.png">
+                        <p>动态</p>
+                    </div>
+                    <div class="top1-photo" style="margin-left:6px;">
+                        <img src="排行榜图标.png">
+                        <p>排行榜</p>
+                    </div>
+                </div>
+                <ul id="content-top2">
+                    <li class="content-top-list">
+                        <a href="">动画</a>
+                        <div class="content-top-list1">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">MAD·AMV</a></td>
+                                    <td><a href="">综合</a></td>
+                                </tr>
+                                <tr><td><a href="">MMD·3D</a><td></tr>
+                                <tr><td><a href="">短片·手书·配音</a></td></tr>
+                                <tr><td><a href="">特设</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">音乐</a>
+                        <div class="content-top-list1"style="width:240px;">
+                            <table class="top-table" >
+                                <tr>
+                                    <td><a href="">原创音乐</a></td>
+                                    <td><a href="">演奏</a></td>
+                                    <td><a href="">音频</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">翻唱</a><td>
+                                    <td><a href="">MV</a><td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">VOCALOID UTAU</a></td>
+                                    <td><a href="">音乐现场</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">电音</a></td>
+                                    <td><a href="">音乐综合</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">舞蹈</a>
+                        <div class="content-top-list1" style="width:150px;">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">宅舞</a></td>
+                                    <td><a href="">舞蹈综合</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">街舞</a></td>
+                                    <td><a href="">舞蹈教程</a></td>
+                                </tr>
+                                <tr><td><a href="">明星舞蹈</a></td></tr>
+                                <tr><td><a href="">中国舞</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">科技</a>
+                        <div class="content-top-list1" style="width:150px;">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">趣味科普人文</a></td>
+                                    <td><a href="">机械</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">野生技术协会</a></td>
+                                    <td><a href="">汽车</a></td>
+                                </tr>
+                                <tr><td><a href="">演讲·公开课</a><td></tr>
+                                <tr><td><a href="">星海</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">生活</a>
+                        <div class="content-top-list1" style="width:120px;">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">搞笑</a></td>
+                                    <td><a href="">手工</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">日常</a></td>
+                                    <td><a href="">绘画</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">美食圈</a></td>
+                                    <td><a href="">运动</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">动物圈</a></td>
+                                    <td><a href="">其他</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">时尚</a>
+                        <div class="content-top-list1" style="width:100px;">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">美妆</a></td>
+                                    <td><a href="">风尚标</a></td>
+                                </tr>
+                                <tr><td><a href="">服饰</a></td></tr>
+                                <tr><td><a href="">健身</a></td></tr>
+                                <tr><td><a href="">T台</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">娱乐</a>
+                        <div class="content-top-list1" style="width:80px;">
+                            <table class="top-table">
+                                <tr><td><a href="">综艺</a></td></tr>
+                                <tr><td><a href="">明星</a></td></tr>
+                                <tr><td><a href="">Korea相关</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">放映厅</a>
+                        <div class="content-top-list1" style="width:80px;">
+                            <table class="top-table">
+                                <tr><td><a href="">纪录片</a></td></tr>
+                                <tr><td><a href="">电影</a></td></tr>
+                                <tr><td><a href="">电视剧</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">番剧</a>
+                        <div class="content-top-list2">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">连载动画</a></td>
+                                    <td><a href="">新番时间表</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">完结动画</a></td>
+                                    <td><a href="">番剧索引</a></td>
+                                </tr>
+                                <tr><td><a href="">资讯</a><td></tr>
+                                <tr><td><a href="">官方延伸</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">国创</a>
+                        <div class="content-top-list2"  style="width:200px;">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">国产动画</a></td>
+                                    <td><a href="">资讯</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">国产原创相关</a></td>
+                                    <td><a href="">新番时间表</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">布袋戏</a></td>
+                                    <td><a href="">国产动画索引</a></td>
+                                </tr>
+                                <tr><td><a href="">动态漫·广播剧</a><td></td>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">游戏</a>
+                        <div class="content-top-list2" style="width:200px;height:150px;">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">单机游戏</a></td>
+                                    <td><a href="">桌游棋牌</a></td>
+                                    <td><a href="">游戏赛事</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">电子竞技</a></td>
+                                    <td><a href="">GMV</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">手机游戏</a></td>
+                                    <td><a href="">音游</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="">网络游戏</a></td>
+                                    <td><a href="">Mugen</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">数码</a>
+                        <div class="content-top-list2"  style="width:70px;">
+                            <table class="top-table">
+                                <tr><td><a href="">手机平板</a><td></tr>
+                                <tr><td><a href="">电脑装机</a><td></tr>
+                                <tr><td><a href="">摄影摄像</a></td></tr>
+                                <tr><td><a href="">影音智能</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">鬼畜</a>
+                        <div class="content-top-list2"style="width:90px;">
+                            <table class="top-table">
+                                <tr><td><a href="">鬼畜调教</a><td></tr>
+                                <tr><td><a href="">音MAD</a><td></tr>
+                                <tr><td><a href="">大力VOCALOLD</a></td></tr>
+                                <tr><td><a href="">教程演示</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">广告</a>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">影视</a>
+                        <div class="content-top-list2"style="width:70px;">
+                            <table class="top-table">
+                                <tr><td><a href="">影视杂谈</a><td></tr>
+                                <tr><td><a href="">影视剪辑</a><td></tr>
+                                <tr><td><a href="">短片</a></td></tr>
+                                <tr><td><a href="">预告·资讯</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                    <li class="content-top-list">
+                        <a href="">更多</a>
+                        <div class="content-top-list2"style="width:120px;">
+                            <table class="top-table">
+                                <tr>
+                                    <td><a href="">搞笑</a><td>
+                                    <td><a href="">VLOG</a><td>
+                                </tr>
+                                <tr><td><a href="">动物圈</a><td></tr>
+                                <tr><td><a href="">美食圈</a></td></tr>
+                                <tr><td><a href="">单机游戏</a></td></tr>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+                <div id="content-top3">
+                    <span><img src="专栏.png" style="width:20px;height:20px;">
+                        <a href="">专栏</a></span>
+                    <span><img src="活动.png" style="width:20px;height:20px;">
+                        <a href="">活动</a></span>
+                    <span><img src="小黑屋.png" style="width:20px;height:20px;">
+                        <a href="">小黑屋</a></span>
+                    <span><img src="直播.png" style="width:20px;height:20px;">
+                        <a href="">直播</a></span>
+                    <span><img src="专题.png" style="width:20px;height:20px;">
+                        <a href="">专题</a></span>
+                    <span><img src="音乐stdio.png" style="width:20px;height:20px;">    <a href="">音乐PLUS</a></span>
+                </div>
+            </div>
+
+            <div id="slideshow">
+                <div id="slideshow1">
+                    <a href=""><img src="轮播图.png" style="width:470px;height:225px;border-radius: 5px;"></a>
+                </div>
+                <div id="little-picture">
+                    <a href=""><img src="轮播1.png" style="width:185px;height:105px;"></a>
+                    <a href=""><img src="轮播2.png"></a>
+                    <a href=""><img src="轮播3.png"></a>
+                    <a href=""><img src="轮播4.png"></a>
+                    <a href=""><img src="轮播5.png"></a>
+                    <a href=""><img src="轮播6.png"></a>
+                </div>
+            </div>
+
+            <div id="generalize">
+                <div id="generalize-top">
+                    <span id="generalize1">推广</span>
+                    <span id="generalize2"><a>B站仙女集合啦，快来奶一口!</a></span>
+                    <input type="submit" value="在线列表">
+                </div>
+                <div id="generalize-bottom">
+                    <div class="generalize-box" style="margin-left:5px;">
+                        <a href="">
+                            <img src="推广1.png">
+                            <span>"我们本能忍受黑暗，如果不曾见光"</span>
+                            <p>飞雪の祈り</p>
+                        </a>
+                    </div>
+                    <div class="generalize-box">
+                        <a href="">
+                            <img src="推广2.png">
+                            <span>小伙竟然对姐姐下手了！偷用姐姐化妆品！</span>
+                            <p>康雅雅ya</p>
+                        </a>
+                    </div>
+                    <div class="generalize-box">
+                        <a href="">
+                            <img src="推广3.png">
+                            <span>【非主流系列2】青春疼痛物语、女生嘚友谊</span>
+                            <p>元气小鸡血</p>
+                        </a>
+                    </div>
+                    <div class="generalize-box">
+                        <a href="">
+                            <img src="推广4.png">
+                            <span>［萌新自制］如?何?笑?出?电?音?</span>
+                            <p>real_ARUKAS_</p>
+                        </a>
+                    </div>
+                    <a href=""><img src="推广5.png"></a>
+                </div>
+            </div>
+
+            <img src="广告1.png" style="width:1106px;">
+
+            <div id="live">
+                <div id="liveleft">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">正在直播</span>
+                        <span class="liveleft-top2">
+                            当前共有 1234520111 个在线直播</span>
+                        <span class="liveleft-top3"><a>233秒居然能做这些!</a></span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom">
+                        <div class="liveleft-bottom-box"><a href="">
+                            <img src="正在直播1.png" class="live-img1">
+                            <img src="秋山秀水.png" class="live-img2">
+                            <p class="live-up">秋山秀水</p>
+                            <span>超级恐怖的游戏直播...</span>
+                            <p class="live-sort">主机游戏</p>
+                        </a></div>
+                        <div class="liveleft-bottom-box"><a href="">
+                            <img src="正在直播2.png"class="live-img1">
+                            <img src="豆豆豆豆豆豆红.png" class="live-img2">
+                            <p class="live-up">豆豆豆豆豆豆红的...</p>
+                            <span>椰子红豆冰</span>
+                            <p class="live-sort">其他绘画</p>
+                        </a></div>
+                        <div class="liveleft-bottom-box"><a href="">
+                            <img src="正在直播3.png"class="live-img1">
+                            <img src="狗妹katto.png" class="live-img2">
+                            <p class="live-up">狗妹katto</p>
+                            <span>冲 脸 咬 人</span>
+                            <p class="live-sort">绝地求生</p>
+                        </a></div>
+                        <div class="liveleft-bottom-box" style="margin-right:0px;"><a href="">
+                            <img src="正在直播4.png"class="live-img1">
+                            <img src="哔哩哔哩王者荣耀.png" class="live-img2">
+                            <p class="live-up">哔哩哔哩王者荣耀</p>
+                            <span>2019KPL经典比赛回顾</span>
+                            <p class="live-sort">王者荣耀</p>
+                        </a></div>
+                        <div class="liveleft-bottom-box"><a href="">
+                            <img src="正在直播5.png"class="live-img1">
+                            <img src="梦宝贝baby.png" class="live-img2">
+                            <p class="live-up">梦宝贝baby</p>
+                            <span>我想你无我不欢</span>
+                            <p class="live-sort">云顶之弈</p>
+                        </a></div>
+                        <div class="liveleft-bottom-box"><a href="">
+                            <img src="正在直播6.png"class="live-img1">
+                            <img src="漩涡鸣人.png" class="live-img2">
+                            <p class="live-up">漩涡鸣人</p>
+                            <span>早</span>
+                            <p class="live-sort">300英雄</p>
+                        </a></div>
+                        <div class="liveleft-bottom-box"><a href="">
+                            <img src="正在直播7.png"class="live-img1">
+                            <img src="晚晚Ailsa.png" class="live-img2">
+                            <p class="live-up">晚晚Ailsa</p>
+                            <span>难顶 这声音 白白胖胖！</span>
+                            <p class="live-sort">绝地求生</p>
+                        </a></div>
+                        <div class="liveleft-bottom-box" style="margin-right:0px;"><a href="">
+                            <img src="正在直播8.png"class="live-img1">
+                            <img src="半半子.png" class="live-img2">
+                            <p class="live-up">半半子</p>
+                            <span>早起来快乐聊天</span>
+                            <p class="live-sort">视频聊天</p>
+                        </a></div>
+                    </div>
+                </div>
+                <div id="liveright">
+                    <div id="liveright-top">
+                        <span>直播排行</span>
+                        <span>关注的主播</span>
+                        <span style="color: #00a1d6;border-bottom:1px solid  #00a1d6;">为你推荐</span>
+                    </div>
+                    <img src="直播右边大图.png" style="width:280px;height:300px;">
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin-bottom:20px;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">动画</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="动画1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">苏卡不列！瞄内，我干完毛子回来了...</a></p>
+                            <p class="cartoon-p2"><a href="">-柠檬君-</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="动画2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[凹凸世界MMD】</a></p>
+                            <p class="cartoon-p2"><a href="">现充bot</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="动画3.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【MMD】火影忍者疾风传FLOW</a></p>
+                            <p class="cartoon-p2"><a href="">花开月樱月</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="动画4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">饭圈把B站污染成什么样了？</a></p>
+                            <p class="cartoon-p2"><a href="">野灿baka</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="动画5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">点 开 就 爽</a></p>
+                            <p class="cartoon-p2"><a href="">神游的虎仔</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="动画6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【JOJO/猛男版新宝岛】护卫队之舞</a></p>
+                            <p class="cartoon-p2"><a href="">汋之沥</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="动画7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【JOJO/二乔】都快忘了，原来我曾经也无...</a></p>
+                            <p class="cartoon-p2"><a href="">焚香鬼士</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="动画9.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">欢迎来到实力至上教室 1080p</a></p>
+                            <p class="cartoon-p2"><a href="">KAKETUS</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="动画右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">霸权续作集结！2020年四月新番...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分:272.8万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">???【阅片无数37】</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">入坑假面骑士不知道看哪个，这个...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">这TM要是能火，要什么你们定!!!...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">被全网封杀的杰作，看完后，感受...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">《崩坏三》</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">【动画】DIO打老板</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">DC高分名篇小丑，跟着joker...</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <img src="广告2.png" style="width:1106px;margin-bottom:40px;">
+
+
+            <div id="live" style="width:1110px;height:480px;margin:10px 0px 20px 0px;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1"style="float: left;margin-right: 30px;margin-left:10px">番剧</span>
+                        <ul >
+                            <li style="border-bottom:1px solid #00a1d6;;"><a href="" style="color:#00a1d6;">最新</a></li>
+                            <li><a href="">周一</a></li>
+                            <li><a href="">周二</a></li>
+                            <li><a href="">周三</a></li>
+                            <li><a href="">周四</a></li>
+                            <li><a href="">周五</a></li>
+                            <li><a href="">周六</a></li>
+                            <li><a href="">周日</a></li>
+                        </ul>
+                        <span class="drama-top-span2"><a href="">新番时间表></a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:370px;overflow: auto;">
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧1.png">
+                            <span  class="drama-bottombox-span1">暖暖日记 4th</span>
+                            <span class="drama-bottombox-span2">第49话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧2.png">
+                            <span  class="drama-bottombox-span1">歌舞伎町夏洛克</span>
+                            <span class="drama-bottombox-span2">第21话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧3.png">
+                            <span  class="drama-bottombox-span1">歌舞伎町夏洛克(限港澳台地區)</span>
+                            <span class="drama-bottombox-span2">第21话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧4.png">
+                            <span  class="drama-bottombox-span1">织田肉桂信长</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧5.png">
+                            <span  class="drama-bottombox-span1">恋爱小行星</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧6.png">
+                            <span  class="drama-bottombox-span1">神推偶像登上武道馆人我就死而无憾</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧7.png">
+                            <span  class="drama-bottombox-span1">地缚少年花子君</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧8.png">
+                            <span  class="drama-bottombox-span1">宝石商人理查德的谜鉴定</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧9.png">
+                            <span  class="drama-bottombox-span1">无限系统树</span>
+                            <span class="drama-bottombox-span2">第8话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧10.png">
+                            <span  class="drama-bottombox-span1">索玛丽与森林之神</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧11.png">
+                            <span  class="drama-bottombox-span1">奇幻女怪盗</span>
+                            <span class="drama-bottombox-span2">第8话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧12.png">
+                            <span  class="drama-bottombox-span1">星掠者</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧13.png">
+                            <span  class="drama-bottombox-span1">星掠者(僅限港澳台地區)</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧14.png">
+                            <span  class="drama-bottombox-span1">Re:从零开始的异世界生活新编集版</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="番剧15.png">
+                            <span  class="drama-bottombox-span1">因为太怕痛就全点防御力了</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                    </div>
+                </div>
+                <div id="liveright" style="width:295px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <span class="cartoon-right-p1">因为太怕痛就全点防...</span>
+                            <span class="drama-right">更新至第9话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">异度侵入 ID:INVADED</p>
+                            <span class="drama-right">更新至第10话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">星掠者</p>
+                            <span class="drama-right">更新至第9话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">这虚构推理</p>
+                            <span class="drama-right">更新至第8话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">Re :从零开始的异世...</p>
+                            <span class="drama-right">更新至第9话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">某科学的超电磁炮T</p>
+                            <span class="drama-right">更新至第7话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">黑色四叶草</p>
+                            <span class="drama-right">更新至第话124</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">地缚少年花子君</p>
+                            <span class="drama-right">更新至第9话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">9</span>
+                            <p class="cartoon-right-p1">诸神的逆鳞</p>
+                            <span class="drama-right">更新至第21话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">10</span>
+                            <p class="cartoon-right-p1">命运冠位指定 绝对...</p>
+                            <span class="drama-right">更新至第话18</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+             
+            <div id="live" style="height:450px;margin:0px;width:100%;">
+                <div id="liveleft" style="height:450px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">番剧动态</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="番剧动态1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">【4月】埃罗芒阿老师10 [独家正版]</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="番剧动态2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【7月】碧蓝之海08[独家正版]</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="番剧动态3.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【1月】异度侵入ID:INVADED 01 [独家...</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="番剧动态4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【1月】宝石商人理查德的谜鉴定01 </a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="番剧动态5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【中字】被成员偷吃了饼千而大哭的白泽加奈惠...</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="番剧动态6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【10月】我,要成为双马尾02</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="番剧动态7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【4月】文豪野犬第三季01 [独家正版]</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="番剧动态8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【7月】徒然喜欢你11</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="width:295px;">
+                    <div id="cartoon-right-toplist">
+                        <span>特别推荐</span>
+                        <a href="" style="border-style: none;padding:0px;float: right;"><img src="番剧动态右边.png" style="margin:20px 0px 0px 14px;"></a>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="live" style="width:1110px;height:480px;margin:10px 0px 20px 0px;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1"style="float: left;margin-right: 30px;margin-left:10px">国创</span>
+                        <ul >
+                            <li style="border-bottom:1px solid #00a1d6;;"><a href="" style="color:#00a1d6;">最新</a></li>
+                            <li><a href="">周一</a></li>
+                            <li><a href="">周二</a></li>
+                            <li><a href="">周三</a></li>
+                            <li><a href="">周四</a></li>
+                            <li><a href="">周五</a></li>
+                            <li><a href="">周六</a></li>
+                            <li><a href="">周日</a></li>
+                        </ul>
+                        <span class="drama-top-span2"><a href="">新番时间表></a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:400px;overflow: auto;">
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创1.1.png">
+                            <span  class="drama-bottombox-span1">仙王的日常生活</span>
+                            <span class="drama-bottombox-span2">第11话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创1.2.png">
+                            <span  class="drama-bottombox-span1">星武神诀动态漫</span>
+                            <span class="drama-bottombox-span2">第10话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创1.3.png">
+                            <span  class="drama-bottombox-span1">少女前线人形小剧场日语版</span>
+                            <span class="drama-bottombox-span2">第23话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创2.1.png">
+                            <span  class="drama-bottombox-span1">霹雳侠峰(闽南语)</span>
+                            <span class="drama-bottombox-span2">第27话~第28话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创2.2.png">
+                            <span  class="drama-bottombox-span1">霹雳侠峰(普通话)</span>
+                            <span class="drama-bottombox-span2">第19话~第20话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创2.3.png">
+                            <span  class="drama-bottombox-span1">霹雳侠峰(普通话免费)</span>
+                            <span class="drama-bottombox-span2">第27话~第28话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创3.1.png">
+                            <span  class="drama-bottombox-span1">峡谷重案组第四季</span>
+                            <span class="drama-bottombox-span2">第8话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创3.2.png">
+                            <span  class="drama-bottombox-span1">末日告白诗动态漫</span>
+                            <span class="drama-bottombox-span2">第5话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创3.3.png">
+                            <span  class="drama-bottombox-span1">风姿物语动态漫</span>
+                            <span class="drama-bottombox-span2">第29话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创4.1.png">
+                            <span  class="drama-bottombox-span1">解药</span>
+                            <span class="drama-bottombox-span2">第10话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创4.2.png">
+                            <span  class="drama-bottombox-span1">大王不高兴</span>
+                            <span class="drama-bottombox-span2">第11话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创4.3.png">
+                            <span  class="drama-bottombox-span1">元尊 动态漫</span>
+                            <span class="drama-bottombox-span2">第10话</span>
+                        </div></a>
+                        <a href=""><div class="drama-bottom-box">
+                            <img src="国创5.1.png">
+                            <span  class="drama-bottombox-span1">兴武神诀 动态漫</span>
+                            <span class="drama-bottombox-span2">第9话</span>
+                        </div></a>
+                    </div>
+                </div>
+                <div id="liveright" style="width:295px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist" style="height:300px;">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <span class="cartoon-right-p1">我的三体之章北海传</span>
+                            <span class="drama-right">更新至第8话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">仙王的日常生活</p>
+                            <span class="drama-right">更新至第11话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">灵笼</p>
+                            <span class="drama-right">更新至中章</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">大王不高兴</p>
+                            <span class="drama-right">更新至第11话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">喜羊羊与灰太狼之羊. ..</p>
+                            <span class="drama-right">全60话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">剑网3-侠肝义胆沈剑...</p>
+                            <span class="drama-right">更新至第10话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">镇魂街第二季</p>
+                            <span class="drama-right">更新至第5话</span>
+                        </a></li>
+                    </ul>
+                    <a><img src="国创右边.png"></a>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">国产原创相关</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="国创原创相关1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">【全职高手】十大经典语录「值得收藏」</a></p>
+                            <p class="cartoon-p2"><a href="">十柒号</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="国创原创相关2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【二哈和他的白猫师尊广播剧】震惊!晚夜玉衡...</a></p>
+                            <p class="cartoon-p2"><a href="">推文的小睿呀</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="国创原创相关3.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【魔道祖师】世家公子五人组/混剪/超燃</a></p>
+                            <p class="cartoon-p2"><a href="">LAO-老瑶子</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="国创原创相关4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">高能!国漫中的十大经典台词</a></p>
+                            <p class="cartoon-p2"><a href="">妖主杀生丸.</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="国创原创相关5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">【翻唱|处处耽】粮仓失守、创作受限,原耽女...</a></p>
+                            <p class="cartoon-p2"><a href="">苏一002</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="国创原创相关6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">史上最全国漫盘点第七期</a></p>
+                            <p class="cartoon-p2"><a href="">古月天子</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="国创原创相关7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">您已邀请【楚晚宁/沈清秋/顾昀】加入群聊“育...</a></p>
+                            <p class="cartoon-p2"><a href="">在上铺煎蛋的染</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="国创原创相关8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">经典回顾:喜羊羊何以称霸中国动画十年(产业..</a></p>
+                            <p class="cartoon-p2"><a href="">雨瞳霖</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="国创原创相关右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">心服口服,这就是我想要的《...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 90.7万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">2019最猛逆袭动画! 科技霸权VS人...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">瞬间燃爆!这样热血的喜羊羊,你..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">【我的三体】B站UP主如何成就国. ..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">在B站你甚至可以学习历史名</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">肖战AO3事件全梳理:关于粉圈举. ..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">【729的视频日记】729宅家记之谁...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">【清风】风云3第71期邪魔决</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <img src="广告3.png" style="width:1106px;margin-bottom:40px;">
+
+
+            <div id="live" style="height:720px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:720px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1" style="float: left;">漫画</span>
+                        <ul >
+                            <li style="border-bottom:1px solid #00a1d6;;"><a href="" style="color:#00a1d6;">人气推荐</a></li>
+                            <li><a href="">今日更新下载</a></li>
+                            <li><a href="">下载APP</a></li>
+                        </ul>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box pircture-box"><a href="">
+                            <img src="漫画111.png" class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">工作细胞</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">搞笑 战斗</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box pircture-box"><a href="">
+                            <img src="漫画2.png"class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">我家大师兄脑子有坑</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">搞笑 古风</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box pircture-box"><a href="">
+                            <img src="漫画3.png"class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">我的守护女友</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">冒险 热血</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box pircture-box" style="margin-right:0px;"><a href="">
+                            <img src="漫画4.png"class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">总之就是非常可爱</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">日常 搞笑</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box pircture-box"><a href="">
+                            <img src="漫画5.png"class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">鲲吞天下</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">玄幻热血</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box pircture-box"><a href="">
+                            <img src="漫画6.png"class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">Fate/Grand Order</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">游戏穿越</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box pircture-box"><a href="">
+                            <img src="漫画7.png"class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">刀剑神域</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">热血 奇幻</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box pircture-box" style="margin-right:0px;"><a href="">
+                            <img src="漫画8.png"class="live-img1">
+                            <p class="cartoon-p1 picture-p1"><a href="">齐木楠雄的灾难</a></p>
+                            <p class="cartoon-p2 picture-p2"><a href="">校园 搞笑</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;height:720px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist" style="height:660px;">
+                        <li style="height:160px;"> <a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji" style="height:120px;">
+                                <img src="漫画右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">鬼灭之刃</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">更新至第196话</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">租借女友</p>
+                            <span class="drama-right">更新至第196话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">我的守护女友</p>
+                            <span class="drama-right">更新至第94话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">地缚少年花子君</p>
+                            <span class="drama-right">更新至第63话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">辉夜大小姐想让我告...</p>
+                            <span class="drama-right">更新至第180话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">幽冥诡匠</p>
+                            <span class="drama-right">更新至第242话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">星掠者</p>
+                            <span class="drama-right">更新至第59话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">一拳超人</p>
+                            <span class="drama-right">更新至第170话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">9</span>
+                            <p class="cartoon-right-p1">天官赐福</p>
+                            <span class="drama-right">更新至第21话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">10</span>
+                            <p class="cartoon-right-p1">我在皇宫当巨巨</p>
+                            <span class="drama-right">更新至第124话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">11</span>
+                            <p class="cartoon-right-p1">入间同学入魔了!</p>
+                            <span class="drama-right">更新至第146话</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">12</span>
+                            <p class="cartoon-right-p1">斗罗大陆</p>
+                            <span class="drama-right">更新至第247话</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">音乐</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="音乐1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[227大团结]处处举</a></p>
+                            <p class="cartoon-p2"><a href="">莲辰七杀</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="音乐2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[手风琴]模拟钉钉铃声直到[钉钉本钉..</a></p>
+                            <p class="cartoon-p2"><a href="">风流先森</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="音乐3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[EXO]听说这是元老级别的粉丝才知道的现场?</a></p>
+                            <p class="cartoon-p2"><a href="">Pursue_ Ning</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="音乐4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">钉钉本钉,在线求饶]</a></p>
+                            <p class="cartoon-p2"><a href="">钉钉DingTalk</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="音乐5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[Loser]八爷最疯狂钢琴编曲</a></p>
+                            <p class="cartoon-p2"><a href="">Pianominion官方</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="音乐6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">原创 「光」</a></p>
+                            <p class="cartoon-p2"><a href="">由亦申</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="音乐7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[周杰伦]只听人声你就亏了(8)《说好不哭》伴...</a></p>
+                            <p class="cartoon-p2"><a href="">MiDi匠做MiDi</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="音乐8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">最无可争议的中国歌神!台下都是老外,唱完迈...</a></p>
+                            <p class="cartoon-p2"><a href="">小8音乐秀</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="音乐右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">[warma]百万粉了啊啊啊啊...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 125.9万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">[钉之歌]巴颜喀拉</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">[初音未来] Hand in Hand (Magic...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">[Animenz] secret base一你给我...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">[泠驾翻唱]流年如歌[拜年祭金..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">[WNS中字] 200305 BTS (防弹少...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">[祖娅纳惜]逐光之路( [诡秘之...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">晴空一尾鲤(原创曲)</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">舞蹈</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="舞蹈1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">久等了!《猩宝岛》！</a></p>
+                            <p class="cartoon-p2"><a href="">老骚豆腐</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="舞蹈2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">体重巅峰作品!新宝岛安排了!</a></p>
+                            <p class="cartoon-p2"><a href="">宁小厨爱生活</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="舞蹈3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">金钟国经典猛男舞蹈女Alone女[Spade黑桃]</a></p>
+                            <p class="cartoon-p2"><a href="">Spade黑桃_</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="舞蹈4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[1M] YoojungLee 编舞</a></p>
+                            <p class="cartoon-p2"><a href="">1MILLION_ OFFICIAL</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="舞蹈5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">绝了!MTPOP@JOAT裁判表演</a></p>
+                            <p class="cartoon-p2"><a href="">放克精选</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="舞蹈6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">元旦会上的黑帮摇</a></p>
+                            <p class="cartoon-p2"><a href="">李李李告鸟</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="舞蹈7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[舞蹈教程]Jennie《Solo》 舞蹈镜...</a></p>
+                            <p class="cartoon-p2"><a href="">-SugarFree-</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="舞蹈8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[舞蹈风暴X剑网3]神仙舞蹈|《宣》十大门派...</a></p>
+                            <p class="cartoon-p2"><a href="">亚亚dfk</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="舞蹈右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">“你会守护好我的对吧!”|向日...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 46.1万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">[短短] Thumbs up-甜vs咸萌妹御..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">[猫饼] shake ito会跳舞的裙子不...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">祝我生日快乐0(∩_∩)O~VVSo ...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">网课间隙蹦个迪,天台的风太大了..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">[小野妹子w]客厅蹦迪! Thumbs...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">宅女蹦迪! Othumbs up [ 西瓜新]</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">我就看了10遍而已! !太会扭了</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>       
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">游戏</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="游戏1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">Minecraft缩小100万倍[Mario躲猫猫] !! 超. . .</a></p>
+                            <p class="cartoon-p2"><a href="">阿神的ili官方頻道</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="游戏2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[冒险岛攻略]台服快速入坑!下载注册安装加. ..</a></p>
+                            <p class="cartoon-p2"><a href="">吸小蠢喵</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="游戏3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">戴上耳机,前方极度舒适!请享受用100+小时...</a></p>
+                            <p class="cartoon-p2"><a href="">烽火湛蓝</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="游戏4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[生死狙击.乱斗]理发店没开门?当麻化身Tony...</a></p>
+                            <p class="cartoon-p2"><a href="">上只当麻</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="游戏5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[锈湖:猫头鹰x乌鸦]猜猜我是谁</a></p>
+                            <p class="cartoon-p2"><a href="">老潇sparrow</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="游戏6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">局部坏死不是“煌"片!霜星你别跑! [明日方舟...</a></p>
+                            <p class="cartoon-p2"><a href="">谷谷永不咕咕</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="游戏7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[IG 2020新赛季预告片]余热未尽,砥砺前...</a></p>
+                            <p class="cartoon-p2"><a href="">土豆a你个马铃薯</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="游戏8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">当明日方舟美服玩家发现安塞尔是猛男之后的反...</a></p>
+                            <p class="cartoon-p2"><a href="">消失的G</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="游戏右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">[罗汉鬼套路]扎克加日炎最...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 277.6万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">花22元买到精神污染游戏玩了-会...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">连续受虐5天!我把史上最难的“自...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">[Chimera君]寂寞的大爷(像素游.</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">航天大师老番茄</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">[主播真会玩八卦篇] 113 :肖战的.</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">最强黑道王</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">[逗鱼时刻]第241期FGNB! .</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>        
+
+            
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">科技</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="科技1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">这车有一-万匹马力,能瞬间让一般的驾驶员失明...</a></p>
+                            <p class="cartoon-p2"><a href="">AMCC肌肉车俱乐部</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="科技2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">教小姐姐开500匹的手挡M4! 真男人座驾!马...</a></p>
+                            <p class="cartoon-p2"><a href="">盛嘉成/a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="科技3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[日语入门初级] -五十音图-最好的梦子老师...</a></p>
+                            <p class="cartoon-p2"><a href="">GPS好孩子</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="科技4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">老男孩教育2020年Python全栈第22期从入..</a></p>
+                            <p class="cartoon-p2"><a href="">路飞学城小媛老师</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="科技5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">执行死刑为何大快人心?恶贯满盈的孙小果究竟...</a></p>
+                            <p class="cartoon-p2"><a href="">一个凡老师</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="科技6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">美国“至尊公主”号21人确诊 ，目前仅检测46人</a></p>
+                            <p class="cartoon-p2"><a href="">观察者网</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="科技7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">科普: 什么是Mask R-CNN实例分割算法</a></p>
+                            <p class="cartoon-p2"><a href="">bubiling</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="科技8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">流体力学(清华大学)</a></p>
+                            <p class="cartoon-p2"><a href="">静水流深2020</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="科技右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">[睡前消息85]粉丝闹出的事..</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 126.0万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">[半佛]为什么渣男总是无往不利?</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">外交部回应美主持人要中国就疫情...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">如何科学地研究[粗鄙之语」?</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">[回形针PaperClip]你的App对你..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">骁话一下: 19年打掉2万亿,帝国坟..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">我强奸我自己犯法吗? ?</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">暗访纽约医院....美国小哥郭杰瑞 : ..</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>        
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">数码</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="数码1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[MKBHD中字] OPPOFind X2 Pro上手简评: ..</a></p>
+                            <p class="cartoon-p2"><a href="">MKBHD搬运站</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="数码2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">源自想象,但超越想象。OPPO Find x2/2pro上...</a></p>
+                            <p class="cartoon-p2"><a href="">Ultra-simple</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="数码3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[保富图学院]如何为脸部布光(中文字幕)</a></p>
+                            <p class="cartoon-p2"><a href="">牛不尼兹</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="数码4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[奇怪君] OPPO FindX2 pro_上手120hz屏幕...</a></p>
+                            <p class="cartoon-p2"><a href="">真是奇怪le</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="数码5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">「科技美学直播」小米10、小米10Pro 有何区..</a></p>
+                            <p class="cartoon-p2"><a href="">科技美学</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="数码6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[何同学]我就扫个码更好的手机相机有什么意... </a></p>
+                            <p class="cartoon-p2"><a href="">老师好我叫何同学</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="数码7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href=""> [小泽]OPPO Find X2Pro评测 :为什么说10...</a></p>
+                            <p class="cartoon-p2"><a href="">钟文泽</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="数码8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[开箱]加价购买的华为Mate Xs 5G可折叠全面.. .</a></p>
+                            <p class="cartoon-p2"><a href="">艾奥科技</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="数码右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">这个折叠屏手机光开盖合盖我...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 115.4万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">[短的发布会]屏好才是真的好! 0...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">[小泽] OPPO Find X2 Pro评测: . ..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">世界上最快的CPU有多快? 64核能...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">OPPO Find X2系列| OPPO Find x...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">[猿]显卡选购①选品牌、比价格..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">在国外谷歌手机真好用?谷歌Pixel...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">[爱否速描] OPPO Find X2 Pro , ...</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>        
+ 
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">生活</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="生活1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">拼夕夕12r买到的史莱姆,它好玩吗?!</a></p>
+                            <p class="cartoon-p2"><a href="">奶熙的兔兔</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="生活2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[助眠-Bakery]高质量无人声敲击,极度舒适..</a></p>
+                            <p class="cartoon-p2"><a href="">LuciferWYJ</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="生活3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[旷古级沙雕新闻]请一定要看到最后,笑死人...</a></p>
+                            <p class="cartoon-p2"><a href="">虎烂大王</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="生活4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">失去一 只眼睛又怎样?“ 单眼女孩’活成学生心...</a></p>
+                            <p class="cartoon-p2"><a href="">小央视频</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="生活5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">vlog 06吃一周减肥餐什么效果|不能出门不如...</a></p>
+                            <p class="cartoon-p2"><a href="">高晓筱QvQ-</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="生活6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">我拒绝了两百万口罩生意</a></p>
+                            <p class="cartoon-p2"><a href="">纳豆奶奶</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="生活7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href=""> [UFC248 |褰前纪实]第四集:张伟丽要用拳...爱</a></p>
+                            <p class="cartoon-p2"><a href="">UFC终极格斗冠军赛官方</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="生活8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">“那是我日夜思念,深深着的人啊”</a></p>
+                            <p class="cartoon-p2"><a href="">囧墙先生</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="生活右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">一上午输了20万人民币,网赌. ..</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 312.1万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">100斤土豆可以做出多少士豆淀粉? ...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">把女友全部口红融化成一支口红! ..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">这就是史上最棒的炸鸡!如果不是...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">"以爱之名你还愿意吗"</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">美人鱼名场面,我讲认真的，肖战...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">创小号加女友,结果绿了</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">这TM才叫网课!</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">鬼畜</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="鬼畜1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[肖战原声]跟着我!糊!(全程高燃)...</a></p>
+                            <p class="cartoon-p2"><a href="">龙之王修罗</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="鬼畜2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[蔡徐坤]仙剑鸡侠传</a></p>
+                            <p class="cartoon-p2"><a href="">金色传说竹鼠</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="鬼畜3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">8848撤硕手机,向老八的传奇人生致敬! !</a></p>
+                            <p class="cartoon-p2"><a href="">虎烂大王</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="鬼畜4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">对王之王唐伯鸟</a></p>
+                            <p class="cartoon-p2"><a href="">回圣剑少女0爱</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="鬼畜5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[燕双鹰]水手</a></p>
+                            <p class="cartoon-p2"><a href="">SupernovaLuPin</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="鬼畜6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[孙笑川]稻香</a></p>
+                            <p class="cartoon-p2"><a href="">三宅绫子</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="鬼畜7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">你是猪</a></p>
+                            <p class="cartoon-p2"><a href="">还有一天就放假了</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="鬼畜8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[为肖战洗白]求求你们理智点,别黑肖战. ..</a></p>
+                            <p class="cartoon-p2"><a href="">凉拌莲菜</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="鬼畜右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">得</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 124.6万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">英雄联盟已删角色</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">B站祖安浴室-肖战必糊!「娱乐...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">227之后鬼畜区现状</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">你来控制曹操,打败诸葛亮!互动..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">肖战粉不服?我们坤坤教你做人</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">[肖战]大封车(全程押韵)</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">封元甲</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">时尚</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="时尚1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">细数这些年交的高科技智商税!来看看说的是你...</a></p>
+                            <p class="cartoon-p2"><a href="">嘟嘟酱啊啊啊</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="时尚2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">10分钟超燃脂HIIT有氧运动 (不伤膝盖)比跑步. ..</a></p>
+                            <p class="cartoon-p2"><a href="">周六野Zoey</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="时尚3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">喷泡: nike最后的良心，</a></p>
+                            <p class="cartoon-p2"><a href="">Ryan不BT</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="时尚4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[互动视频]大脸高颧骨宽额头快速找到适合的. ..</a></p>
+                            <p class="cartoon-p2"><a href="">南一桑</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="时尚5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[Sunny Funny Zumba] 40分钟zumba运动合..</a></p>
+                            <p class="cartoon-p2"><a href="">夕雨健身生活</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="时尚6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[的港星仿妆?情人节处...</a></p>
+                            <p class="cartoon-p2"><a href="">Ruby幼熙</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="时尚7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">在川久保玲的CDG/DSM实习后惊呼:最有情怀...</a></p>
+                            <p class="cartoon-p2"><a href="">VIC-XIA</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="时尚8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">超简单徒手瘦小腿训练/跟练版</a></p>
+                            <p class="cartoon-p2"><a href="">MidoriL au</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="时尚右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">【党妹】党妹绝美！！！！！！</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分:999.9万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">10分钟高效瘦大腿运动,躺在床上...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">10分钟美腿拉伸运动,变直变长，...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">我花了9个小时,把衣橱里的每件衣....</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">如果直男和美妆博主比拼直播卖货...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">从爆红到暴富! 北美顶流金卡戴珊..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">女孩这就是梦寐以求的长睫毛?</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">逼自己自律9个方法|告别拖延症 ..</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">广告</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="广告区1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">可口可乐Coca-Cola[Taste the Feling..</a></p>
+                            <p class="cartoon-p2"><a href="">回沉默的方舟</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="广告区2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">80年代日本经典可口可乐.广告~画面太美不敢直...</a></p>
+                            <p class="cartoon-p2"><a href="">80年代日本经典可口可乐.</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="广告区3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">变形金刚G1玩具广告擎天柱美版VS日版</a></p>
+                            <p class="cartoon-p2"><a href="">来自塞博坦情怀</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="广告区4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">看到他挥舞金箍棒的那一刻,我流泪了</a></p>
+                            <p class="cartoon-p2"><a href="">疯智传媒</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="广告区5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">头顶上的广告合集，想成为告之王的男人</a></p>
+                            <p class="cartoon-p2"><a href="">郝凡啊</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="广告区8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[张国荣]广告合集~</a></p>
+                            <p class="cartoon-p2"><a href="">蜜桃cheung</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="广告区7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[朱一龙祝福]给央视爸爸跪了，居然能让我崽..</a></p>
+                            <p class="cartoon-p2"><a href="">一颗咸柠檬Hau</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="广告区6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">BL-充电宝 动态练习</a></p>
+                            <p class="cartoon-p2"><a href="">八两XJ</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="广告区右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">[朱-龙]20200306肯德...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 1.9万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">日式沙雕广告:牛郎转行刑警,爱...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">[中字]《假面骑士01》 扮演玩具A. ..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">[小崔每日秀]不愧是小崔秀从人...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">「中文字幕」CONVERSE匡威正...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">[番外赏]校园里的海贼王!穿上..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">[CM/日本]苹果笔记本新动画CM...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">[杨幂]无束缚的杨幂,就在CALZ...</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">娱乐</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="娱乐1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[德云社心内不明何必点灯]催泪剪辑向I不..</a></p>
+                            <p class="cartoon-p2"><a href="">by海晏河清</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="娱乐2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">. [中日双语] 77)夕入亍1夕三色/)屏想..</a></p>
+                            <p class="cartoon-p2"><a href="">-街飛烏推L</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="娱乐6.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[也许你没看过系列]马嘉祺的领导能力</a></p>
+                            <p class="cartoon-p2"><a href="">米奇木木三不愛米奇</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="娱乐3.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">偶像失声?听听黄子韬说的吧</a></p>
+                            <p class="cartoon-p2"><a href="">甜酒玖九九</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="娱乐4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[SPN] DeanWinchester| I'm fine</a></p>
+                            <p class="cartoon-p2"><a href="">甜珍糯米团</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="娱乐5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[国内爱豆舞台赏]内娱男爱豆的舞台</a></p>
+                            <p class="cartoon-p2"><a href="">回叶玖YX</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="娱乐6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[瑜洲]我要控诉LD吻戏双标, 2019.12.30</a></p>
+                            <p class="cartoon-p2"><a href="">回精分少女or饭桶佳人</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="娱乐7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">我.能....剪出了全B站最土的[博君一肖]</a></p>
+                            <p class="cartoon-p2"><a href="">横渡西凉河</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="娱乐右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">227事件7问7答:肖战无辜吗? ...</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分: 143.6万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">《石原里美的西班牙本色旅行》跟.</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">巨资买了肖战内幕独家爆料因为..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">律师说]肖战同人《下坠》并不侵...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">[非正式卧谈]第1期:各国代表的..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">鸩凫虐峄...满屏生僻字?“脱线女孩”..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">直播看肖战粉丝剑网三哭麦结果我...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">[博君一肖]听说这个视频可以让.</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">电影</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电影1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[剧情]抓壮丁1963年[CCTV6高清1080p]</a></p>
+                            <p class="cartoon-p2"><a href="">弋0恪</a></p>
+                        </a></div> 
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电影2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[普通话]功夫( 2004 )</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩电影</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电影3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[ 西部/犯罪]西部往事(1968)[褰尔乔莱...</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩电影</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="电影4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">哈利波特与密室( 2003 )</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩电影</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电影5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[普通话]警察故事续集</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩电影</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电影6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[动画]烟花( 2017 )</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩电影</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电影7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[普通话]风云2 ( 2009 ) [谢霆锋/任...</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩电影</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="电影8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[昆曲电影]牡丹亭</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩电影</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist" style="height:300px;">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <span class="cartoon-right-p1">卧虎藏龙</span>
+                            <span class="drama-right">2000-10-13.上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">神探夏洛克:可恶...</p>
+                            <span class="drama-right">2016-01-04. 上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">警察故事</p>
+                            <span class="drama-right">1985-12-14上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">天使陷落</p>
+                            <span class="drama-right">2019-12-31上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">警察故事续集</p>
+                            <span class="drama-right">1988-08-20_上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">叶问4:完结篇.</p>
+                            <span class="drama-right">2019-12-20_上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">超级无敌掌[ ]狗: ... </p>
+                            <span class="drama-right">2005-10-14上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">海绵宝宝</p>
+                            <span class="drama-right">2015-12-01上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">雪耻女孩</p>
+                            <span class="drama-right">2017-12-23.上映</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">贝奥武夫</p>
+                            <span class="drama-right">2007-11-16上映</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">电视剧</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电视剧1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[国产]秦王李世民40集全2005</a></p>
+                            <p class="cartoon-p2"><a href="">迷影社</a></p>
+                        </a></div> 
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电视剧2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[国产]天下粮仓2002全31集/a></p>
+                            <p class="cartoon-p2"><a href="">迷影社</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电视剧3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[剧情/家庭]回家的诱惑33集全[2011]</a></p>
+                            <p class="cartoon-p2"><a href="">迷影社</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="电视剧4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[国产]神探狄仁杰30集全[2004]</a></p>
+                            <p class="cartoon-p2"><a href="">回迷影社</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电视剧5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[历史]太平天国全46集[2000] .</a></p>
+                            <p class="cartoon-p2"><a href="">迷影社</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电视剧6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[1080P] [古装/悬疑]大宋提刑官52集全...</a></p>
+                            <p class="cartoon-p2"><a href="">花卷好吃</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="电视剧7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[剧情Ntuber]四月一日三姐妹之家庭故事...</a></p>
+                            <p class="cartoon-p2"><a href="">迷影社</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="电视剧8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[英剧]真实的人类/Humans第二季..</a></p>
+                            <p class="cartoon-p2"><a href="">迷影社</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist" style="height:300px;">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <span class="cartoon-right-p1">东京大饭店</span>
+                            <span class="drama-right">全11集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">家有儿女</p>
+                            <span class="drama-right">家有儿女</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">面包和汤和猫咪好天气</p>
+                            <span class="drama-right">全4集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">心动讯号</p>
+                            <span class="drama-right">更新至第6集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">非自然死亡</p>
+                            <span class="drama-right">全10集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">我的团长我的团</p>
+                            <span class="drama-right">全43集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">绝味之路</p>
+                            <span class="drama-right">更新至旅途7</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">家有儿女2</p>
+                            <span class="drama-right">全100集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">风的新生活</p>
+                            <span class="drama-right">全10集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">铁齿铜牙纪晓岚4</p>
+                            <span class="drama-right">全42集</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">影视</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="影视1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[杂乱无章]毕业两年后,我才终于明白“喜. ..</a></p>
+                            <p class="cartoon-p2"><a href="">杂乱无章MessUp</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="影视2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[阿斗]东北狠人大闹首尔，被各方追杀《黄海..</a></p>
+                            <p class="cartoon-p2"><a href="">阿斗归来了</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="影视3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">爱情 公寓最被低估的一集 ?爱5第八集剧情解读</a></p>
+                            <p class="cartoon-p2"><a href="">温瞳vantal</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="影视4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[张国荣]还原春光乍泄未采用六结局之一,最...</a></p>
+                            <p class="cartoon-p2"><a href="">娇娇梨</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="影视5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[山花合集|强迫症整理|含吻戏|无差]不要问我...</a></p>
+                            <p class="cartoon-p2"><a href="">up主自我修养藕粥篇</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="影视6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[将恋爱进行到底02X安利向] 傲娇一时爽,追.</a></p>
+                            <p class="cartoon-p2"><a href="">鱼困困困.</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="影视7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[张伟个人向] 致爱情公寓最有种的男人，活的..</a></p>
+                            <p class="cartoon-p2"><a href="">在下伍十九</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="影视8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">爱情故事第17集 放..</a></p>
+                            <p class="cartoon-p2"><a href="">wan万寻:</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist" style="margin-top:-20px;">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <div id="cartoon-laji">
+                                <img src="影视右边.png" style="width:120px;margin-right:10px;">
+                                <span class="cartoon-right-p1" style="width:115px;height:40px;">史诗!中国文化史年表超燃影..</span>
+                                <span class="cartoon-right-p2" style="float:left;font-size:12px;position: relative;top:8px;">综合得分:89.3万</span>
+                            </div>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">[片]员扇耳光!光女侠...</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">这才是国剧女主该有的水平!盘点..</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">顾客你这样我招架不住了</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">[虫哥]塑料姐妹对战两代软饭男.</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">[刘老师]逆天吐槽!宁采臣居然</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">咏春.彪问</p>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">8</span>
+                            <p class="cartoon-right-p1">白莲花制霸职场剧!《完美关.</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+         
+
+
+            <div id="live" style="height:480px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:480px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">纪录片</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:430px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="纪录片1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">蔚蓝之境( 1080P )</a></p>
+                            <p class="cartoon-p2"><a href="">我是一个无心的人</a></p>
+                        </a></div> 
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="纪录片2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">纪录片糟糕历史:荒唐美国总统.2017[高清][英字]</a></p>
+                            <p class="cartoon-p2"><a href="">猛犸君侯</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="纪录片3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">升空30000米 ,我们把相机送出 了地球</a></p>
+                            <p class="cartoon-p2"><a href="">影视飓风</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="纪录片4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[纪录片]但是还有书籍第2集二手书的奇幻漂流</a></p>
+                            <p class="cartoon-p2"><a href="">哔哩哔哩纪录片</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="纪录片5.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">金钱的故事/货币之溯源[高级弹幕熟肉中英..</a></p>
+                            <p class="cartoon-p2"><a href="">搬砖的孢子</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="纪录片6.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">苏联亡党亡国20年祭(六集全)</a></p>
+                            <p class="cartoon-p2"><a href="">青年红近卫军</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="纪录片7.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[央视1080P+高清]七个世界-一个星球[8集..</a></p>
+                            <p class="cartoon-p2"><a href="">种花乐未央</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="纪录片8.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">[抽象:设计的艺术]双语字幕全8集</a></p>
+                            <p class="cartoon-p2"><a href="">Lanowl</a></p>
+                        </a></div>
+                        
+                    </div>
+                </div>
+                <div id="liveright" style="margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist" style="height:300px;">
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">1</span>
+                            <span class="cartoon-right-p1">得</span>
+                            <span class="drama-right">更新至第2集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">2</span>
+                            <p class="cartoon-right-p1">在武汉</p>
+                            <span class="drama-right">更新至第2集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number" style="color:white;background-color:#00a1d6;">3</span>
+                            <p class="cartoon-right-p1">派出所的故事2019</p>
+                            <span class="drama-right">更新至第10集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">4</span>
+                            <p class="cartoon-right-p1">我在中国做电影</p>
+                            <span class="drama-right">更新至第3集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">深邃海洋:南极深处...</p>
+                            <span class="drama-right">全1集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">格拉汉姆诺顿秀第..</p>
+                            <span class="drama-right">全13集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">人生第一次</p>
+                            <span class="drama-right">更新至第6集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">5</span>
+                            <p class="cartoon-right-p1">地平线:我的大脑是...</p>
+                            <span class="drama-right">全1集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">6</span>
+                            <p class="cartoon-right-p1">冒险雷探长</p>
+                            <span class="drama-right">更新至第230集</span>
+                        </a></li>
+                        <li><a href="">
+                            <span class="cartoon-number">7</span>
+                            <p class="cartoon-right-p1">核众食堂</p>
+                            <span class="drama-right">更新至第32集</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="live" style="height:280px;margin:30px 0px 20px 0px;width:100%;">
+                <div id="liveleft" style="height:250px;">
+                    <div id="liveleft-top">
+                        <span class="liveleft-top1">特别推荐</span>
+                        <span class="liveleft-top4"><a href="">更多></a></span>
+                        <span class="liveleft-top4"><a href="">换一换</a></span>
+                    </div>
+
+                    <div id="liveleft-bottom" style="height:250px;">
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="特别推荐1.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">我的20个视频被抄袭!揭秘抖音营销号抄袭套路</a></p>
+                            <p class="cartoon-p2"><a href="">城市不案鹿elk</a></p>
+                        </a></div> 
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="特别推荐2.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">揭这后妈怕不是个反向美妆博主</a></p>
+                            <p class="cartoon-p2"><a href="">CV萧秋子</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box"><a href="">
+                            <img src="特别推荐3.png" class="live-img1">
+                            <p class="cartoon-p1"><a href="">[贫穷料理]炒土豆丝做这几个步骤,才可以又...</a></p>
+                            <p class="cartoon-p2"><a href="">贫穷料理</a></p>
+                        </a></div>
+
+                        <div class="liveleft-bottom-box cartoon-box" style="margin-right:0px;"><a href="">
+                            <img src="特别推荐4.png"class="live-img1">
+                            <p class="cartoon-p1"><a href="">那些你很冒险的梦原唱:林俊杰复音口琴G...</a></p>
+                            <p class="cartoon-p2"><a href="">乙未爷爷</a></p>
+                        </a></div>
+
+                    </div>
+                </div>
+                <div id="liveright" style="height:250px;margin-left:30px;">
+                    <div id="cartoon-right-toplist">
+                        <span>排行榜</span>
+                        <a>更多></a>
+                    </div>
+                    <ul id="cartoon-right-bottomlist" style="height:200px;">
+                        <img src="特别推荐右边.png">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="content-right">
+            <ul id="fixed2">
+                <li>直播</li>
+                <li>动画</li>
+                <li>番剧</li>
+                <li>国创</li>
+                <li>漫画</li>
+                <li>音乐</li>
+                <li>舞蹈</li>
+                <li>游戏</li>
+                <li>科技</li>
+                <li>数码</li>
+                <li>生活</li>
+                <li>鬼畜</li>
+                <li>时尚</li>
+                <li>广告</li>
+                <li>娱乐</li>
+                <li>专栏</li>
+                <li>电影</li>
+                <li>TV剧</li>
+                <li>影视</li>
+                <li>纪录片</li>
+            </ul>
+        </div>
+
+    </div>
+    <div id="footer">
+        <div id="footer-top">
+            <div id="footer-1">
+                <span>bilibili</span>
+                <ul>
+                    <li><a href="">关于我们</a></li>
+                    <li><a href="">加入我们</a></li>
+                    <li><a href="">bilibili认证</a></li>
+                    <li><a href="">联系我们</a></li>
+                    <li><a href="">友情链接</a></li>
+                    <li><a href="">Investor Relations</a></li>
+                    <li><a href="">用户协议</a></li>
+                    <li><a href="">隐私政策</a></li>
+                </ul>
+            </div>
+            <div id="footer-1">
+                <span>传送门</span>
+                <ul style="width:350px;">
+                    <li style="padding-right: 20px;">帮助中心</a></li>
+                    <li style="padding-right: 43px;"><a href=""><a href="">侵权申诉</a></li>
+                    <li style="padding-right: 20px;"><a href="">壁纸站</a></li>
+                    <li style="padding-right: 27px;"><a href="">高级弹幕</a></li>
+                    <li style="padding-right: 40px;"><a href="">活动中心</a></li>
+                    <li><a href="">专车号服务中心</a></li>
+                    <li><a href="">活动专题页</a></li>
+                    <li><a href="">用户反馈论坛</a></li>
+                    <li><a href="">名人壁</a></li>
+                </ul>
+            </div>
+            <div id="footer-1" style="width:260px;margin-right: 0px;">
+                <div id="footer-right-box" style="margin-left: 20px;">
+                    <img src="footer1.png">
+                    <p>客户端下载</p>
+                </div>
+                <div id="footer-right-box">
+                    <img src="footer2.png">
+                    <p>新浪微博</p>
+                </div>
+                <div id="footer-right-box">   
+                    <img src="footer3.png">
+                    <p>官方微信</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer-bottom">
+            <img src="footer-bottom左边.png">
+            <div id="word">
+            <p>广播电视节目制作经营许可证：（沪）字第1248号|网络文化经营许可证：沪网文【2016】2296-134号|信息网络传播视听节目许可证：0910417</p>
+            <p>互联网ICP备案：沪ICP备13002172号-3沪ICP证：沪B2-20100043 |违法不良信息举报邮箱：help@bilibili.com |违法不良信息举报电话：4000233233转3 | 营业执照</p>
+            <p>上海互联网举报中心 | 12318全国文化市场举报网站 | 沪公网安备31011002002436号 | 儿童色情信息举报专区</p>
+            <p>网上有害信息举报专区：中国互联网违法和不良信息举报中心</p>
+            <p>亲爱的市民朋友，上海警方反诈劝阻电话“962110”系专门针对避免您财产被骗受损而设，请您一旦收到来电，立即接听。</p>
+            <p>公司名称：上海宽娱数码科技有限公司|公司地址：上海市杨浦区政立路485号|电话：021-25099888</p>
+            </div>
+        </div>
+    </div>
+
+    <img src="小电视.png" id="fixed1">
+        
+    <span id="fixed3">联系客服</span>
+</body>
+</html>
